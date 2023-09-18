@@ -1,0 +1,68 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int a,b,c;
+    char ch;
+    
+    cout<<"----------------CALCULATOR---------------"<<endl;
+    cout<<endl;
+    cout<<"-----------------------------"<<endl;
+    cout<<"Enter the value of A : ";
+    cin>>a;
+    cout<<"-----------------------------"<<endl;
+    cout<<"Enter the value of B : ";
+    cin>>b;
+    cout<<"-----------------------------"<<endl;
+    cout<<endl;
+    
+    cout<<"Choose The Arithamatic Operation You Want To Perform"<<endl;
+
+    cout<<"---------|    |+|    |-|    |x|    |/|    |---------"<<endl;
+    cout<<endl;
+    
+    cout<<"Enter Choice : ";
+    cin>>ch;
+    
+    switch(ch)
+    {
+        case '+': cout<<endl;
+        cout<<endl; 
+        cout<<"----------------------------------"<<endl;
+        cout<<"The Sum Of Two Number Are : "<<(a+b)<<endl;
+        cout<<"----------------------------------"<<endl;
+        break;
+        
+        case '-': cout<<endl;
+        cout<<endl;
+        cout<<"---------------------------------"<<endl;
+        cout<<"The Sub Of Two Numbers Are : "<<(a-b)<<endl;
+        cout<<"----------------------------------"<<endl;
+        break;
+        
+        case 'x': cout<<endl;
+        cout<<endl;
+        cout<<"----------------------------------"<<endl;
+        cout<<"The Multiplication Of Two Numbers Are : "<<(a*b)<<endl;
+        cout<<"----------------------------------"<<endl;
+        break;
+        
+        case '/': cout<<endl;
+        cout<<endl;
+        cout<<"----------------------------------"<<endl;
+        cout<<"The Division Of Two numbers Are : "<<(a/b)<<endl;
+        cout<<"----------------------------------"<<endl;
+        break;
+        
+        default: cout<<endl;
+        cout<<endl;
+        cout<<"-----------------------------"<<endl;
+        cout<<"-------Invalid Choice--------"<<endl;
+        cout<<"-----------------------------"<<endl;
+        break;
+    }
+    
+return 0;
+
+}
