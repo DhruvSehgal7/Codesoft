@@ -1,0 +1,177 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int MAX_TASKS = 20;
+
+class addtask
+{
+    public:
+    string taskk[MAX_TASKS];
+    int task_count = 0;
+    string completedTasks[MAX_TASKS];
+    int completed_count = 0;
+
+    void welcome()
+    {
+        int s;
+
+        cout << "--------------------------------------------------" << endl;
+        cout << "*What would you like to do*" << endl;
+        cout << "--------------------------------------------------" << endl;
+        cout << "1. List Of Task " << endl
+             << "2. Add Task To List " << endl
+             << "3. Remove Task From List" << endl
+             << "4. Completed Task List" << endl
+             << "5. Move Task to Completed List" << endl;
+        cout << "--------------------------------------------------" << endl;
+        cin >> s;
+        cout << endl;
+
+        if (s == 1)
+        {
+            show();
+        }
+        else if (s == 2)
+        {
+            add();
+        } 
+        else if (s == 3)
+        {
+            remove();
+        }
+        else if (s == 4) 
+        {
+            showCompleted();
+        } 
+        else if (s == 5)
+        {
+            moveToCompleted();
+        }
+    }
+
+    void add()
+    {
+        int a;
+
+        cout << "How many tasks you want to add: ";
+        cin >> a;
+
+        if (task_count + a <= MAX_TASKS)
+        {
+            for (int i = task_count; i < task_count + a; i++)
+            {
+                cout << "Enter the Task: ";
+                cin >> taskk[i];
+                cout << endl;
+            }
+            task_count += a;
+            cout << "Task(s) Added Successfully" << endl;
+        }
+        else
+        {
+            cout << "!!WARNING!!, Capacity Exceeded" << endl;
+        }
+
+        welcome();
+        cout << endl;
+    }
+
+    void show()
+    {
+        for (int i = 0; i < task_count; i++)
+        {
+            cout << "task " << i + 1 << ": " << taskk[i] << endl;
+        }
+
+        welcome();
+        cout << endl;
+    }
+
+    void remove() 
+    {
+        if (task_count == 0) 
+        {
+            cout << "No tasks to remove." << endl;
+        } 
+        else
+        {
+            int index;
+            cout << "Enter the index of the task to remove (1-" << task_count << "): ";
+            cin >> index;
+
+            if (index >= 1 && index <= task_count)
+            {
+                index--;
+                for (int i = index; i < task_count - 1; i++) 
+                {
+                    taskk[i] = taskk[i + 1];
+                }
+                task_count--;
+                cout << "Task Removed Successfully" << endl;
+            }
+            else 
+            {
+                cout << "Invalid index. Task not removed." << endl;
+            }
+        }
+
+        welcome();
+        cout << endl;
+    }
+
+    void showCompleted()
+    {
+        cout << "Completed Tasks:" << endl;
+        for (int i = 0; i < completed_count; i++)
+        {
+            cout << "task " << i + 1 << ": " << completedTasks[i] << endl;
+        }
+
+        welcome();
+        cout << endl;
+    }
+
+    void moveToCompleted()
+    {
+        if (task_count == 0)
+        {
+            cout << "No tasks to move to completed list." << endl;
+        } 
+        else 
+        {
+            int index;
+            cout << "Enter the index of the task to move to completed list (1-" << task_count << "): ";
+            cin >> index;
+
+            if (index >= 1 && index <= task_count)
+            {
+                index--;
+                completedTasks[completed_count] = taskk[index];
+                completed_count++;
+                cout << "Task Moved to Completed List" << endl;
+
+                for (int i = index; i < task_count - 1; i++)
+                {
+                    taskk[i] = taskk[i + 1];
+                }
+                task_count--;
+            } 
+            else 
+            {
+                cout << "Invalid index. Task not moved." << endl;
+            }
+        }
+
+        welcome();
+        cout << endl;
+    }
+};
+
+int main() 
+{
+    addtask task;
+    task.welcome();
+
+    return 0;
+}
